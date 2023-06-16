@@ -10,7 +10,10 @@ urlpatterns = [
 
 
     path('perfil', VistasUsuario.Perfil_Usuario.as_view(), name='perfil'),
-    path('registrar', VistasUsuario.registrarUsuario, name='registrarUsuario'),
+    path('registrarPaciente', VistasUsuario.registrarUsuarioPaciente, name='registrarUsuarioPaciente'),
+    path('registrarProfesional', VistasUsuario.registrarUsuarioProfesional, name='registrarUsuarioProfesional'),
+    path('registrarUsuario', VistasUsuario.registrarUsuario, name='registrarUsuario'),
+    path('listar usuarios', VistasUsuario.UsuariosListView.as_view(), name='listaUsuarios'),
     #path('login/', vistasLogin.Login.as_view() ,name="login"),
     
     #path('', views.index.as_view() ,name="index"),

@@ -21,7 +21,7 @@
         {% if user.is_authenticated %}
 
             <div id="areaLogin">
-                <a class="link-light" href="{% url 'login:logout' %}"><button id="btnCerrar" type="button" class="btn btn-success" href="dsd">Registrar Pacientes</button></a>
+                <a class="link-light" href="{% url 'usuarios:registrarUsuarioPaciente' %}"><button id="btnCerrar" type="button" class="btn btn-success" href="dsd">Registrar Pacientes</button></a>
                 <a class="link-light" href="{% url 'login:logout' %}"><button id="btnCerrar" type="button" class="btn btn-success" href="dsd">Registrar Profesionales</button></a>
                 <a class="link-light" href="{% url 'login:logout' %}"><button id="btnCerrar" type="button" class="btn btn-success" href="dsd">Registrar Usuarios</button></a>
                 <a class="link-light" href="{% url 'login:logout' %}"><button id="btnCerrar" type="button" class="btn btn-danger" href="dsd">Cerrar sesion</button></a>

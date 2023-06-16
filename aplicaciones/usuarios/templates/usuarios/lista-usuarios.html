@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.4.0/css/bootstrap4-toggle.min.css"
+    rel="stylesheet">
+
+    
+        
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+
+
+        <style>
+          /* Estilos para los botones */
+          .boton {
+            background-color: green;
+            color: white;
+            border-radius: 20px;
+            padding: 10px 20px;
+            text-decoration: none;
+            display: inline-block;
+          }
+
+            .Guardar-button {
+              background-color: #1b8a40;
+              color: white;
+              border-radius: 20px;
+              padding: 20px;
+              border: none;
+            }   
+        
+            .ver-button {
+              background-color: #00bfff;
+              color: white;
+              border-radius: 20px;
+              padding: 20px;
+              border: none;
+            }
+        
+            .inicio-button {
+              background-color: blue;
+              color: white;
+              border-radius: 10px;
+              padding: 10px;
+              border: none;
+            }
+    
+    
+          
+        </style>
+    </head>
+
+    <body style="background-color: #a2dcf0;">
+
+      <header style="display: flex; align-items: center; justify-content: flex-start;">
+        <img src="C:\xampp\htdocs\firebase\logo-hicast.png" alt="Descripción de la imagen" style="height: 100px; width: 100px; margin: 20px;">
+        <h1 style="margin: 0; text-align: center; color: #141414; font-weight: bold; font-family: 'Arial', sans-serif;">Lista de Usuarios registrados</h1>
+
+
+
+      </header>
+    
+
+    
+
+
+ <!-- Menú de botones -->
+ <nav>
+  
+  <a href="file:///C:/xampp/htdocs/firebase/hicast.html" class="boton">Inicio</a>
+  <a href="file:///C:/xampp/htdocs/firebase/hicast.html" class="boton" onclick="confirmarSalir()">Salir</a>
+</nav>
+
+
+
+<br>
+  <table class="table table-success">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">nombre</th>
+        <th scope="col">Apelido</th>
+        <th scope="col">email</th>
+        <th scope="col">nacionalidad</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for usuario in object_list   %}
+            <tr>
+
+                <td>{{ forloop.counter }}</td>
+                <td>{{ usuario.nombres|upper }}</td>
+                <td>{{ usuario.apellidos|upper }}</td>
+                <td>{{ usuario.email }}</td>
+                <td>{{ usuario.nacionalidad}}</td>
+                
+                
+            </tr>
+            
+        {% empty %}
+            <li>No existen usuarios en este momento</li>
+        {% endfor %}
+    </tbody>
+  </table>
+
+    
+
+     
+
+    
+
+</body>
+  
+

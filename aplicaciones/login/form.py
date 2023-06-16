@@ -34,7 +34,7 @@ class loginForm(AuthenticationForm):
             'username': ('Probando cosas'),
         }
         error_messages = {
-            'username': {
+            'email': {
                 'max_length': ("This writer's name is too long."),
             },
         }
@@ -70,7 +70,7 @@ class UsuariosForm(UserCreationForm):
         #usuario_id = kwargs.pop('usuario')
         super(UsuariosForm, self).__init__(*args, **kwargs)
         print("Formulario UsuariosForm")
-
+        
         self.fields['password1'].widget = widgets.PasswordInput(
             attrs={
                 'placeholder': 'New password',
@@ -81,6 +81,10 @@ class UsuariosForm(UserCreationForm):
                 'placeholder': 'Repeat password',
                 'class': 'browser-default'
             })
+        
+        
+        
+        #self.fields['creado_por'].queryset = Usuarios.objects.filter(id=self.usuarioID.id)
 
      
 

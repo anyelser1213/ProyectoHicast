@@ -5,7 +5,8 @@ from django.shortcuts import render, redirect
 #Clases para las plantillas
 from django.views.generic import View,TemplateView, CreateView, UpdateView, DetailView, ListView, DeleteView
 
-from aplicaciones.usuarios.form import NewUserForm
+from aplicaciones.usuarios.form import UsuarioPacienteForm
+from aplicaciones.usuarios.models import Usuarios
 
 # Create your views here.
 
@@ -49,18 +50,74 @@ class Perfil_Usuario(TemplateView):
         print("en contextos:",context['contrato'])
         return context
 
- 
-def registrarUsuario(request):  
+class UsuariosListView(ListView):
+    model = Usuarios
+    template_name = "usuarios/lista-usuarios.html"
+    paginate_by = 100  # if pagination is desired
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        #context["now"] = timezone.now()
+        return context
+
+#Aqui se registran usuario de... paciente
+def registrarUsuarioPaciente(request):  
+
+
+    if request.method == 'POST':  
+        print("Entramos en post")
+        form = UsuarioPacienteForm(request.POST)  
+        if form.is_valid():  
+            print(request.POST)
+            print("Los datos son correctos")
+            form.save()  
+            #messages.success(request, 'Account created successfully')  
+        else:
+            print("Ocurrio un error en la validacion")
+
+        return redirect("usuarios:listaUsuarios")
+  
+    #Este es el metodo get
+    else:  
+        print("Entramos en get")
+        form = UsuarioPacienteForm()  
+        context = {  
+            'form':form  
+        }  
+    return render(request, 'usuarios/registrar-paciente-hicast.html', context)
+
+
+
+#Aqui se registran usuario de... profesional
+def registrarUsuarioProfesional(request):  
 
     if request.POST == 'POST':  
-        form = NewUserForm()  
+        form = UsuarioPacienteForm()  
         if form.is_valid():  
             form.save()  
             messages.success(request, 'Account created successfully')  
   
     else:  
-        form = NewUserForm()  
+        form = UsuarioPacienteForm()  
     context = {  
         'form':form  
     }  
-    return render(request, 'usuarios/registrar-usuario.html', context)
+    return render(request, 'usuarios/registrar-profesional-hicast.html', context)
+
+
+
+#Aqui se registran usuario de... normal
+def registrarUsuario(request):  
+
+    if request.POST == 'POST':  
+        form = UsuarioPacienteForm()  
+        if form.is_valid():  
+            form.save()  
+            messages.success(request, 'Account created successfully')  
+  
+    else:  
+        form = UsuarioPacienteForm()  
+    context = {  
+        'form':form  
+    }  
+    return render(request, 'usuarios/registrar-usuarios-sistema-hicast.html', context)

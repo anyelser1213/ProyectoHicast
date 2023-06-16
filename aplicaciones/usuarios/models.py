@@ -175,7 +175,7 @@ class Usuarios(AbstractBaseUser,PermissionsMixin):
     
 
 
-    rol = models.CharField("Rol",max_length=150,choices=rol,default='usuario',blank=True, null=True)
+    rol = models.CharField("Rol",max_length=150,choices=rol,default='usuario',blank=False, null=True)
     nacionalidad = models.CharField("Nacionalidad",max_length=150,choices=nacionalidad,default='chileno',blank=True, null=True)
     #rol = models.ForeignKey(Rol,on_delete=models.CASCADE,blank=False, null=True)
     #rol = models.CharField("Rol",max_length=150,choices=usuario_tipos,default='cliente',blank=True, null=True)

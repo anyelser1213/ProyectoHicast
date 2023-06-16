@@ -43,11 +43,6 @@
 
     
   </head>
- 
-  <!-- Agrega aquí los enlaces a las bibliotecas de Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-database.js"></script>
-
 
     
   <style>
@@ -77,7 +72,21 @@
   </style>
 </head>
 <body>  
-  <form id="registroForm">
+
+  <hr><hr>
+
+  <form action="{% url 'usuarios:registrarUsuarioPaciente' %}" method="post">
+    {% csrf_token %}
+    {% for field in form %}
+        <div class="fieldWrapper">
+            {{ field.errors }}
+            {{ field.label_tag }} {{ field }}
+        </div>
+    {% endfor %}
+    <hr><hr>
+
+    <input type="submit" class="Guardar-button" value="Guardar">
+<!--
     <label for="nombres"style="font-size: 22px;">Nombres:</label>
     <input type="text" id="nombre" required style="border-radius: 10px; border: none; width: 200px; margin: 0 auto;"><br>
 
@@ -124,22 +133,20 @@
     <input type="text" id="diagnostico3" required style="border-radius: 10px; border: none; width: 200px; margin: 0 auto;"><br>
 
     
-
-    <button type="submit" class="Guardar-button">Guardar</button>
+-->
     
-    <button style="background-color: #1b8a40; border-radius: 20px; border: none; color: white; padding: 20px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer;"onclick="window.location.href='file:///C:/xampp/htdocs/firebase/index.html'">Siguiente</button>
-    <button style="background-color: #1b8a40; border-radius: 20px; border: none; color: white; padding: 20px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer;"onclick="window.location.href='file:///C:/xampp/htdocs/firebase/index.html'">Inicio</button>
+    
     
     
   </form>
 
-  <div id="mensaje"></div>
+  <hr><hr>
 
-  <a href="usuarios.html"><button class="ver-button">Ver Usuarios Registrados</button></a>
+
+  <a href="{% url 'usuarios:listaUsuarios'%}"><button class="ver-button">Ver Usuarios Registrados</button></a>
   
- 
+</body>
   
 
-  <script>
 
 
