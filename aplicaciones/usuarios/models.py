@@ -192,8 +192,8 @@ class Usuarios(AbstractBaseUser,PermissionsMixin):
     #Para enlazar al manager que has creado
     objects = UsuarioManager()
 
-    USERNAME_FIELD = 'username'  #Para estableccer este campo como unico
-    REQUIRED_FIELDS = ['email'] # Campos obligatorios(los pide cuando los creas por consola)
+    USERNAME_FIELD = 'email'  #Para estableccer este campo como unico
+    #REQUIRED_FIELDS = ['email'] # Campos obligatorios(los pide cuando los creas por consola)
 
     def __str__(self):
         return f'Usuario {self.username}'

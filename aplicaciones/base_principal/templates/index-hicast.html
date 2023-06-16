@@ -16,24 +16,50 @@
   <div class="container">
     <nav class="navbar navbar-light bg-light justify-content-between">
       <a class="navbar-brand">HICAST</a>
-      <div class="form-inline">
-        <div class="custom-control custom-checkbox my-1 mr-sm-2" id="checkLogin">
-          <input type="checkbox" checked data-toggle="toggle" data-on="Registrarse" data-off="Ingresar" id="loginRestro" >
-        </div>
-        <div id="areaRegistro" style="display: none;">
-          <input type="email" id="email" placeholder="Registra tu correo" class="form-control mr-sm-2" />
-          <input type="password" id="pass" placeholder="Registra tu password" class="form-control mr-sm-2" />
-          <button onclick="enviar()" class="btn btn-outline-success my-2 my-sm-0">Registro</button>
-        </div>
-        <div id="areaLogin" style="display: none;">
-          <input type="email" id="emailA" placeholder="Ingresa tu correo" class="form-control mr-sm-2" value="panchopinto@gmail.com" />
-          <input type="password" id="passA" placeholder="Ingresa tu password" class="form-control mr-sm-2" />
-          <button onclick="acceso()" id="btnAcceso" class="btn btn-outline-success my-2 my-sm-0">Acceso</button>
-          <button id="btnCerrar" type="button" class="btn btn-danger" onclick="cerrar()" style="display: none;">Cerrar sesión</button>
-          <button id="btnspaginasig" type="button" class="btn btn-danger" onclick="paginasiguiente()" style="display: float;">Siguiente</button>
-            <!--<button onclick="acceso()" id="btnSiguiente" style="background-color: #1b8a40; border: none; color: white; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer;" class="btn btn-outline-success my-2 my-sm-0">Ingresar222</button>-->
+      
+      
+        {% if user.is_authenticated %}
 
-        </div>
+            <div id="areaLogin">
+                <a class="link-light" href="{% url 'login:logout' %}"><button id="btnCerrar" type="button" class="btn btn-success" href="dsd">Registrar Pacientes</button></a>
+                <a class="link-light" href="{% url 'login:logout' %}"><button id="btnCerrar" type="button" class="btn btn-success" href="dsd">Registrar Profesionales</button></a>
+                <a class="link-light" href="{% url 'login:logout' %}"><button id="btnCerrar" type="button" class="btn btn-success" href="dsd">Registrar Usuarios</button></a>
+                <a class="link-light" href="{% url 'login:logout' %}"><button id="btnCerrar" type="button" class="btn btn-danger" href="dsd">Cerrar sesion</button></a>
+            </div>
+
+        {% else %}
+
+            <div class="form-inline">
+                <div class="custom-control custom-checkbox my-1 mr-sm-2" id="checkLogin">
+                <input type="checkbox" checked data-toggle="toggle" data-on="Registrarse" data-off="Ingresar" id="loginRestro" >
+            </div>
+
+            <div id="areaRegistro" style="display: none;">
+                <input type="email" id="email" placeholder="Registra tu correo" class="form-control mr-sm-2" />
+                <input type="password" id="pass" placeholder="Registra tu password" class="form-control mr-sm-2" />
+                <button onclick="enviar()" class="btn btn-outline-success my-2 my-sm-0">Registro</button>
+            </div>
+            <div id="areaLogin" style="display: none;">
+                <form action="{% url 'login:login' %}" method="post" encoding='utf-8'>
+                    {% csrf_token %}
+                    
+                    {{form.username}}
+                    {{form.password}}
+                <button type="submit" id="" class="btn btn-outline-success my-2 my-sm-0">Acceso</button>
+                    <!--<button onclick="acceso()" id="btnSiguiente" style="background-color: #1b8a40; border: none; color: white; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer;" class="btn btn-outline-success my-2 my-sm-0">Ingresar222</button>-->
+                </form>
+    
+                    {% if form.non_field_errors  %}
+                                <ul class="messages">
+                                <li class="warning">
+                                    Combinacion de credenciales incorrecta.
+                                </li>
+                                </ul>     
+                    {% endif %}
+            </div>
+        {% endif %}
+        
+        
       </div>
     </nav>
     <main style="display: flex; justify-content: center; align-items: center; flex-direction: column; height: 100vh;">
