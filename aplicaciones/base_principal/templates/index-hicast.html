@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.4.0/css/bootstrap4-toggle.min.css"
+    rel="stylesheet">
+  <title>SISTEMA HICAST</title>
+</head>
+<body>
+  <body style="background-color: #a2dcf0;"></body>
+  <div class="container">
+    <nav class="navbar navbar-light bg-light justify-content-between">
+      <a class="navbar-brand">HICAST</a>
+      <div class="form-inline">
+        <div class="custom-control custom-checkbox my-1 mr-sm-2" id="checkLogin">
+          <input type="checkbox" checked data-toggle="toggle" data-on="Registrarse" data-off="Ingresar" id="loginRestro" >
+        </div>
+        <div id="areaRegistro" style="display: none;">
+          <input type="email" id="email" placeholder="Registra tu correo" class="form-control mr-sm-2" />
+          <input type="password" id="pass" placeholder="Registra tu password" class="form-control mr-sm-2" />
+          <button onclick="enviar()" class="btn btn-outline-success my-2 my-sm-0">Registro</button>
+        </div>
+        <div id="areaLogin" style="display: none;">
+          <input type="email" id="emailA" placeholder="Ingresa tu correo" class="form-control mr-sm-2" value="panchopinto@gmail.com" />
+          <input type="password" id="passA" placeholder="Ingresa tu password" class="form-control mr-sm-2" />
+          <button onclick="acceso()" id="btnAcceso" class="btn btn-outline-success my-2 my-sm-0">Acceso</button>
+          <button id="btnCerrar" type="button" class="btn btn-danger" onclick="cerrar()" style="display: none;">Cerrar sesión</button>
+          <button id="btnspaginasig" type="button" class="btn btn-danger" onclick="paginasiguiente()" style="display: float;">Siguiente</button>
+            <!--<button onclick="acceso()" id="btnSiguiente" style="background-color: #1b8a40; border: none; color: white; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer;" class="btn btn-outline-success my-2 my-sm-0">Ingresar222</button>-->
+
+        </div>
+      </div>
+    </nav>
+    <main style="display: flex; justify-content: center; align-items: center; flex-direction: column; height: 100vh;">
+      <h1>Bienvenido al sitio de HICAST</h1>
+      <p>Esta es la página de ingreso a los Análisis.</p>
+      <img src="{% static 'hicast/img/imagen.avif' %}" alt="Descripción de la imagen" style="margin-top: 20px; max-width: 100%; max-height: 80%; object-fit: contain;">
+    </main>
+  </div>
+  
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+  <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.4.0/js/bootstrap4-toggle.min.js"></script>
+  
+  <script src="{% static 'hicast/js/app.js' %}"></script>
+  <button id="miBoton" style="display: none;">Ir a la siguiente página</button>
+  <button id="btnIR" type="button" class="btn btn-danger" onclick="cerrar()"  style="display: none;">Cerrar PRUEBA</button>
+  </body>
+
+</html>

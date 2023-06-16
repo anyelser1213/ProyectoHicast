@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+    <header style="display: flex; align-items: center; justify-content: flex-start;">
+            <img src="C:\xampp\htdocs\firebase\logo-hicast.png" alt="Descripción de la imagen" style="height: 100px; width: 100px; margin: 20px;">
+            <h1 style="margin: 0; text-align: center; color: #141414; font-weight: bold; font-family: 'Arial', sans-serif;">Registro de Usuarios</h1>
+
+
+
+          </header>
+        
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+    </head>
+    <body style="background-color: #a2dcf0;"></body>
+
+    <style>
+      .boton {
+          margin-bottom: 1cm;
+      }
+  </style>
+
+    <style>
+      /* Estilos para los botones */
+      .boton {
+        background-color: green;
+        color: white;
+        border-radius: 20px;
+        padding: 10px 20px;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      
+    </style>
+
+      <!-- Menú de botones -->
+      <nav>
+        <a href="file:///C:/xampp/htdocs/firebase/seleccion_archivo.html" class="boton">Seleccionar Archivos</a>
+        <a href="file:///C:/xampp/htdocs/firebase/registro_pacientes.html" class="boton">Registro de Pacientes</a>
+        <a href="file:///C:/xampp/htdocs/firebase/registro_profesional.html" class="boton">Registro de Profesionales</a>
+        <a href="file:///C:/xampp/htdocs/firebase/hicast.html" class="boton">Inicio</a>
+        <a href="file:///C:/xampp/htdocs/firebase/hicast.html" class="boton" onclick="confirmarSalir()">Salir</a>
+      </nav>
+
+  <style>
+    .Guardar-button {
+      background-color: #1b8a40;
+      color: white;
+      border-radius: 20px;
+      padding: 20px;
+      border: none;
+    }   
+
+    .ver-button {
+      background-color: #00bfff;
+      color: white;
+      border-radius: 20px;
+      padding: 20px;
+      border: none;
+    }
+
+    .inicio-button {
+      background-color: blue;
+      color: white;
+      border-radius: 10px;
+      padding: 10px;
+      border: none;
+    }
+  </style>
+</head>
+<body>  
+  <form id="registroForm">
+    <label for="nombres"style="font-size: 22px;">Nombres:</label>
+    <input type="text" id="nombre" required style="border-radius: 10px; border: none; width: 200px; margin: 0 auto;"><br>
+
+    <label for="apellidos"style="font-size: 22px;">Apellidos:</label>
+    <input type="text" id="apellido" required style="border-radius: 10px; border: none; width: 200px; margin: 0 auto;"><br>
+
+    <label for="rut"style="font-size: 22px;">RUT:</label>
+    <input type="text" id="rut" required style="border-radius: 10px; border: none; width: 200px; margin: 0 auto;"><br>
+
+    <label for="edad"style="font-size: 22px;">Edad:</label>
+    <input type="number" id="edad" required style="border-radius: 10px; border: none; width: 200px; margin: 0 auto;"><br>
+
+    <label for="correo"style="font-size: 22px;">Correo:</label>
+    <input type="email" id="correo" required style="border-radius: 10px; border: none; width: 200px; margin: 0 auto;"><br>
+
+    <label for="direccion"style="font-size: 22px;">Direccion:</label>
+    <input type="text" id="direccion" required style="border-radius: 10px; border: none; width: 200px; margin: 0 auto;"><br>
+
+    <label for="ciudad"style="font-size: 22px;">Ciudad:</label>
+    <input type="text" id="ciudad" required style="border-radius: 10px; border: none; width: 200px; margin: 0 auto;"><br>
+
+    <label for="comuna" style="font-size: 22px;">Comuna:</label>
+    <input type="text" id="comuna" required style="border-radius: 10px; border: none; width: 200px; margin: 0 auto;"><br>
+
+    <label for="region" style="font-size: 22px;">Region:</label>
+    <input type="text" id="region" required style="border-radius: 10px; border: none; width: 200px; margin: 0 auto;"><br>
+
+    <label for="perfil" style="font-size: 22px;">Perfil:</label>
+    <select id="perfil" style="border-radius: 10px; border: none; width: 200px; margin: 0 auto;">
+      <option value="superadmin"></option>
+      <option value="superadmin">Superadministrador</option>
+      <option value="admin">Administrador</option>
+      <option value="jefe">Jefe</option>
+      <option value="supervisor">Supervisor</option>
+    </select><br>
+
+   
+   
+    <button type="submit" class="Guardar-button">Guardar</button>
+    
+    <button style="background-color: #1b8a40; border-radius: 20px; border: none; color: white; padding: 20px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer;"onclick="window.location.href='file:///C:/xampp/htdocs/firebase/index.html'">Siguiente</button>
+    <button style="background-color: #1b8a40; border-radius: 20px; border: none; color: white; padding: 20px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer;"onclick="window.location.href='file:///C:/xampp/htdocs/firebase/hicast.html'">Inicio</button>
+    
+    
+  </form>
+
+  <div id="mensaje"></div>
+
+  <a href="usuarios.html"><button class="ver-button">Ver Usuarios Registrados</button></a>
+  
+  
